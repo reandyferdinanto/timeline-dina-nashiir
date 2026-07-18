@@ -305,19 +305,28 @@ export default function WeddingDashboard() {
                           <CheckCircle size={16} className="role-icon" />
                           <span>{person.role}</span>
                         </div>
-                        {person.relatedEventId && (
-                          <button 
-                            onClick={() => jumpToTimeline(person.relatedEventId)}
-                            style={{ 
-                              marginTop: '0.5rem', fontSize: '0.8rem', color: 'var(--primary-color)', 
-                              background: 'rgba(114, 47, 55, 0.1)', padding: '0.2rem 0.5rem', 
-                              borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.3rem',
-                              border: 'none', cursor: 'pointer'
-                            }}
-                          >
-                            <Clock size={12} /> Lihat Jadwal Terkait
-                          </button>
-                        )}
+                        {person.relatedEventId && (() => {
+                          const event = timelineData.find(item => item.id === person.relatedEventId);
+                          return event ? (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.5rem', width: '100%' }}>
+                              <div style={{ fontSize: '0.85rem', color: '#666', display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#f5f5f5', padding: '0.3rem 0.6rem', borderRadius: '4px', width: 'fit-content' }}>
+                                <Clock size={14} style={{ color: 'var(--primary-color)' }} /> 
+                                <span style={{ fontWeight: 600 }}>Tugas: {event.time}</span>
+                              </div>
+                              <button 
+                                onClick={() => jumpToTimeline(person.relatedEventId)}
+                                style={{ 
+                                  fontSize: '0.8rem', color: 'var(--primary-color)', 
+                                  background: 'rgba(114, 47, 55, 0.1)', padding: '0.3rem 0.6rem', 
+                                  borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.4rem',
+                                  border: 'none', cursor: 'pointer', width: 'fit-content', fontWeight: 500
+                                }}
+                              >
+                                <FileText size={12} /> Lihat Detail Jadwal
+                              </button>
+                            </div>
+                          ) : null;
+                        })()}
                       </div>
                     </div>
                   ))}
