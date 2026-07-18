@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { Search, Clock, Users, Calendar, MapPin, Heart, FileText, CheckCircle, Utensils, Coffee } from 'lucide-react';
+import { Search, Clock, Users, Calendar, MapPin, Heart, FileText, CheckCircle, Utensils, Coffee, Camera } from 'lucide-react';
 
 // --- Data Preparation ---
 const weddingDetails = {
@@ -119,6 +119,23 @@ const cateringData = {
   ]
 };
 
+const fotoData = [
+  "Keluarga Inti Cpp/Cpw",
+  "Keluarga Besar Bapa Rahmat (Palembang)",
+  "Keluarga Besar Bapa Miden (Medan)",
+  "Keluarga Besar Hardjo Suwito",
+  "Keluarga Besar Amril Djohor",
+  "Keluarga Besar Djaman",
+  "Keluarga Besar Gabungan",
+  "Pt. Godrej Indonesia",
+  "(Kolega Kerja List VIP Nashiir)",
+  "Teman Kuliah Universitas Negri Veteran Jakarta",
+  "Teman SMA Angkasa",
+  "Teman Rumah",
+  "Bridesmaid",
+  "Penjaga Buku Tamu"
+];
+
 const highlightNames = (text: string) => {
   if (!text) return text;
   const names = [
@@ -230,6 +247,12 @@ export default function WeddingDashboard() {
               className={`tab-btn ${activeTab === 'catering' ? 'active' : ''}`}
             >
               <Utensils size={18} /> Menu Catering
+            </button>
+            <button
+              onClick={() => setActiveTab('foto')}
+              className={`tab-btn ${activeTab === 'foto' ? 'active' : ''}`}
+            >
+              <Camera size={18} /> List Foto
             </button>
           </div>
         </div>
@@ -441,6 +464,31 @@ export default function WeddingDashboard() {
                         </div>
                       ))}
                     </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: FOTO */}
+          {activeTab === 'foto' && (
+            <div>
+              <div className="panel-header">
+                <h2 className="panel-title"><Camera size={28} /> List Foto Resepsi</h2>
+                <span className="panel-badge">{fotoData.length} Sesi Foto</span>
+              </div>
+              
+              <div className="grid-container">
+                {fotoData.map((item, idx) => (
+                  <div key={idx} className="panitia-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.5rem' }}>
+                    <div style={{ 
+                      width: '40px', height: '40px', borderRadius: '50%', background: 'var(--primary-color)', 
+                      color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                      fontSize: '1.2rem', fontWeight: 600, flexShrink: 0 
+                    }}>
+                      {idx + 1}
+                    </div>
+                    <h3 className="panitia-name" style={{ fontSize: '1.1rem', margin: 0 }}>{item}</h3>
                   </div>
                 ))}
               </div>

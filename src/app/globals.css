@@ -731,15 +731,29 @@ h1, h2, h3, h4, h5, h6, .font-serif {
     margin-top: -2rem;
   }
   .tabs-wrapper {
-    flex-direction: column;
-    border-radius: var(--radius-lg);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    gap: 0.5rem;
+    border-radius: 0;
     width: 100%;
   }
   .tab-btn { 
+    flex: 1 1 calc(50% - 0.5rem);
     justify-content: center; 
     border-radius: var(--radius-md);
-    width: 100%;
-    padding: 0.85rem 1rem;
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  .tab-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
   }
   .main-panel { 
     padding: 1.5rem 1rem; 
