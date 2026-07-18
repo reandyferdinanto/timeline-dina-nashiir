@@ -61,6 +61,17 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   100% { transform: translateY(0px); }
 }
 
+@keyframes highlightPulse {
+  0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); background: rgba(197, 160, 89, 0.15); transform: scale(1.02); }
+  70% { box-shadow: 0 0 0 20px rgba(197, 160, 89, 0); background: rgba(197, 160, 89, 0.05); transform: scale(1); }
+  100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); background: var(--bg-secondary); transform: scale(1); }
+}
+
+.highlight-pulse {
+  animation: highlightPulse 2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid var(--accent-color) !important;
+}
+
 .fade-in-up {
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
