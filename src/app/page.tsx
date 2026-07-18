@@ -98,9 +98,11 @@ const cateringData = {
   afterAkad: [
     { name: "Soto Ayam + Lontong", qty: "100 porsi" },
     { name: "Kopi & Teh", qty: "50 porsi" },
-    { name: "Air Mineral", qty: "100 porsi" },
-    { name: "Nasi Box Vendor (MUA, Fotografer, WO)", qty: "22 Box" },
-    { name: "Snack Box (Vendor & Keluarga)", qty: "100 Box" }
+    { name: "Air Mineral", qty: "100 porsi" }
+  ],
+  disiapkanKeluarga: [
+    { name: "Nasi Box (untuk vendor)", qty: "22 Box" },
+    { name: "Snack Box (untuk keluarga & vendor)", qty: "100 Box" }
   ],
   gubukan: [
     {
@@ -442,6 +444,19 @@ export default function WeddingDashboard() {
                       <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', width: '100%', gap: '1rem', borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem' }}>
                         <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}><Coffee size={14} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle', color: '#4A6C8C' }}/> {item.name}</span>
                         <span className="waktu-value" style={{ padding: '0.2rem 0.6rem', fontSize: '0.8rem', background: '#F0F4F8', color: '#4A6C8C', borderColor: 'rgba(74, 108, 140, 0.2)' }}>{item.qty}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="panitia-card">
+                  <span className="panitia-category" style={{ background: '#FDF3E1', color: '#B37D26', borderColor: 'rgba(179, 125, 38, 0.2)' }}>Disiapkan Keluarga</span>
+                  <h3 className="panitia-name" style={{ fontSize: '1.4rem' }}>Sarapan Tambahan</h3>
+                  <div className="panitia-role" style={{ flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start' }}>
+                    {cateringData.disiapkanKeluarga.map((item, idx) => (
+                      <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', width: '100%', gap: '1rem', borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem' }}>
+                        <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}><Coffee size={14} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle', color: '#B37D26' }}/> {item.name}</span>
+                        <span className="waktu-value" style={{ padding: '0.2rem 0.6rem', fontSize: '0.8rem', background: '#FDF3E1', color: '#B37D26', borderColor: 'rgba(179, 125, 38, 0.2)' }}>{item.qty}</span>
                       </div>
                     ))}
                   </div>
