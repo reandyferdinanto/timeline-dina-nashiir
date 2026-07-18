@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { Search, Clock, Users, Calendar, MapPin, Heart, FileText, CheckCircle, Utensils, Coffee, Camera } from 'lucide-react';
+import { Search, Clock, Users, Calendar, MapPin, Heart, FileText, CheckCircle, Utensils, Coffee, Camera, Package } from 'lucide-react';
 
 // --- Data Preparation ---
 const weddingDetails = {
@@ -141,6 +141,13 @@ const fotoData = [
   "Penjaga Buku Tamu"
 ];
 
+const perlengkapanData = [
+  "Gembok Angpao 12mm x 2 pcs",
+  "Gembok Ruang Rias 22 mm x 2 pcs",
+  "Koper Angpao (Biru)",
+  "Goody bag untuk souvenir"
+];
+
 const highlightNames = (text: string) => {
   if (!text) return text;
   const names = [
@@ -258,6 +265,12 @@ export default function WeddingDashboard() {
               className={`tab-btn ${activeTab === 'foto' ? 'active' : ''}`}
             >
               <Camera size={18} /> List Foto
+            </button>
+            <button
+              onClick={() => setActiveTab('perlengkapan')}
+              className={`tab-btn ${activeTab === 'perlengkapan' ? 'active' : ''}`}
+            >
+              <Package size={18} /> Lain-lain
             </button>
           </div>
         </div>
@@ -512,6 +525,27 @@ export default function WeddingDashboard() {
                       {idx + 1}
                     </div>
                     <h3 className="panitia-name" style={{ fontSize: '1.1rem', margin: 0 }}>{item}</h3>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB: PERLENGKAPAN */}
+          {activeTab === 'perlengkapan' && (
+            <div>
+              <div className="panel-header">
+                <h2 className="panel-title"><Package size={28} /> Perlengkapan Tambahan</h2>
+                <span className="panel-badge">{perlengkapanData.length} Item</span>
+              </div>
+              
+              <div className="grid-container">
+                {perlengkapanData.map((item, idx) => (
+                  <div key={idx} className="panitia-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.5rem', background: '#F8F9FA' }}>
+                    <div style={{ 
+                      width: '12px', height: '12px', borderRadius: '50%', background: 'var(--primary-color)', flexShrink: 0 
+                    }}></div>
+                    <h3 className="panitia-name" style={{ fontSize: '1.1rem', margin: 0, fontWeight: 500 }}>{item}</h3>
                   </div>
                 ))}
               </div>
