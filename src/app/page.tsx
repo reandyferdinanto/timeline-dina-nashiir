@@ -353,9 +353,9 @@ export default function WeddingDashboard() {
                   </div>
                 </div>
 
-                <div className="info-card info-lokasi">
+                <div className="info-card info-lokasi" style={{ gridColumn: '1 / -1' }}>
                   <h3 className="info-card-title"><MapPin size={22} /> Lokasi & Organizer</h3>
-                  <div className="lokasi-container">
+                  <div className="lokasi-container" style={{ marginBottom: '1.5rem' }}>
                     <div className="lokasi-item">
                        <p className="lokasi-label">Venue</p>
                        <p className="lokasi-value">{weddingDetails.venue}</p>
@@ -364,6 +364,17 @@ export default function WeddingDashboard() {
                        <p className="lokasi-label">Organizer</p>
                        <p className="lokasi-value">{weddingDetails.organizer}</p>
                     </div>
+                  </div>
+                  <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+                    <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.9744847502484!2d106.90907171105853!3d-6.267085961328026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f31c2c754807%3A0xf41b9adb909f4e1a!2sJAMBUR%20DJAWATA%20Office%20%26%20Function%20Hall!5e0!3m2!1sen!2sid!4v1784353884602!5m2!1sen!2sid" 
+                      width="100%" 
+                      height="300" 
+                      style={{ border: 0 }} 
+                      allowFullScreen 
+                      loading="lazy" 
+                      referrerPolicy="strict-origin-when-cross-origin">
+                    </iframe>
                   </div>
                 </div>
               </div>
