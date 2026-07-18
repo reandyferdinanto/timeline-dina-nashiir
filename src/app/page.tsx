@@ -18,7 +18,7 @@ const panitiaData = [
   // Inti & Vendor
   { id: 1, role: "Ketua Panitia, PIC Angpao, & Saksi Nikah CPW", name: "Reandy Ferdinanto", category: "Inti" },
   { id: 2, role: "Koordinator Pelaksana, Dekor, Ent, Dok", name: "BIG WO", category: "Inti" },
-  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah", category: "Keluarga" },
+  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah, Angel, Rika", category: "Keluarga" },
   { id: 4, role: "Vendor Catering", name: "BIG Catering", category: "Vendor" },
   { id: 5, role: "Vendor Dekorasi", name: "Big Decoration", category: "Vendor" },
   { id: 6, role: "Vendor Entertainment", name: "Dream Entertainment", category: "Vendor" },
@@ -29,7 +29,7 @@ const panitiaData = [
   { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Abrar", category: "PIC", relatedEventId: 4, description: "Tugas H-1 (24 Juli 2026): Mengantar souvenir & peralatan pernikahan ke ruang rias, memberikan bukti foto kepada pengantin bahwa barang sudah ditaruh dengan baik & ruangan dikunci. Kunci kemudian dititipkan ke rumah Maulidina untuk persiapan pagi hari." },
   { id: 10, role: "Koord. Keluarga CPP", name: "Neni Balqis", category: "Keluarga" },
   { id: 11, role: "Koord. Keluarga CPW, PIC VIP, & PIC Mahar/Buku Nikah/Hantaran", name: "Muthia", category: "Keluarga" },
-  { id: 30, role: "Koord. Keluarga Besar Hardjosuwito", name: "Tanty", category: "Keluarga", relatedEventId: 8 },
+  { id: 30, role: "Koord. Keluarga Besar Hardjosuwito", name: "Mbak Tanti", category: "Keluarga", relatedEventId: 8 },
 
   // Panitia Akad Nikah
   { id: 12, role: "Teks Meja Akad, Label Kursi & MC Akad", name: "BIG WO", category: "Akad", relatedEventId: 11 },
@@ -38,7 +38,7 @@ const panitiaData = [
   { id: 15, role: "Wali Nikah", name: "Bp. Faizann Raihan Eshan (Adik Kandung)", category: "Akad", relatedEventId: 12 },
   { id: 16, role: "Qori", name: "Lukman Hakim", category: "Akad", relatedEventId: 12 },
   { id: 17, role: "Saritilawah", name: "Putri Daryani", category: "Akad", relatedEventId: 12 },
-  { id: 18, role: "Penghulu (KUA Pondok Gede)", name: "Bp. Ust. H. Khamaludin", category: "Akad", relatedEventId: 12 },
+  { id: 18, role: "Penghulu (KUA Pondok Gede)", name: "Bp. Ust. H. Khamaludin", category: "Akad", relatedEventId: 12, description: "No. Telp: 0857-7282-6785 | Alamat: Jl. Celepuk 2 Gg. H. M. Nasim RT 001/012 Kel. Jatimakmur, Kec. Pondok Gede, Bekasi" },
   { id: 19, role: "Wakil Ketua Panitia & PIC Penghulu", name: "Amar", category: "Inti", relatedEventId: 10, description: "Memantau masing-masing panitia sudah melakukan tugasnya dengan baik. Serta bertugas menghubungi penghulu & memastikan hadir tepat waktu." },
   { id: 21, role: "Saksi Nikah CPP", name: "Bp. Abdul Rahman", category: "Akad", relatedEventId: 12 },
   { id: 22, role: "Pengapit CPP", name: "Ibu Zaenab Rambe & Bp.", category: "Keluarga", relatedEventId: 11 },
