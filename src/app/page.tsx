@@ -8,6 +8,7 @@ const weddingDetails = {
   brideAndGroom: "Dina & Nashiir",
   venue: "Jambur Djawata",
   date: "Sabtu, 25 Juni 2026",
+  seserahanTime: "07.00 / 07.30 WIB (Tentative)",
   akadTime: "08.00 WIB",
   resepsiTime: "11.00 - 13.00 WIB",
   organizer: "Big Wedding Organizer"
@@ -342,6 +343,10 @@ export default function WeddingDashboard() {
                 <div className="info-card info-waktu">
                   <h3 className="info-card-title"><Clock size={22} /> Waktu Acara</h3>
                   <div>
+                    <div className="waktu-row">
+                      <span className="waktu-label">Prosesi Seserahan</span>
+                      <span className="waktu-value">{weddingDetails.seserahanTime}</span>
+                    </div>
                     <div className="waktu-row">
                       <span className="waktu-label">Akad Nikah</span>
                       <span className="waktu-value">{weddingDetails.akadTime}</span>
