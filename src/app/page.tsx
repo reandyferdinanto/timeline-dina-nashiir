@@ -18,14 +18,15 @@ const panitiaData = [
   // Inti & Vendor
   { id: 1, role: "Ketua Panitia", name: "Reandy Ferdinanto", category: "Inti" },
   { id: 2, role: "Koordinator Pelaksana, Dekor, Ent, Dok", name: "BIG WO", category: "Inti" },
-  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah, Tanty", category: "Keluarga" },
+  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah", category: "Keluarga" },
   { id: 4, role: "Vendor Catering", name: "BIG Catering", category: "Vendor" },
   { id: 5, role: "Vendor Dekorasi", name: "Big Decoration", category: "Vendor" },
   { id: 6, role: "Vendor Entertainment", name: "Dream Entertainment", category: "Vendor" },
   { id: 7, role: "Vendor Dokumentasi", name: "BIG Moment", category: "Vendor" },
   
   // PIC & Keluarga
-  { id: 8, role: "PIC Angpao & Souvenir", name: "Reandy", category: "PIC" },
+  { id: 8, role: "PIC Angpao", name: "Reandy", category: "PIC" },
+  { id: 32, role: "PIC Buku Tamu & Souvenir", name: "Damara & Haira", category: "PIC", description: "Menjaga & memastikan semua tamu mengisi buku tamu, menulis list kado (jika berupa hadiah barang), dan memastikan souvenir dibagikan dengan sistem tukar voucher." },
   { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Reandy", category: "PIC", relatedEventId: 4 },
   { id: 10, role: "Koord. Keluarga CPP", name: "Neni Balqis", category: "Keluarga" },
   { id: 11, role: "Koord. Keluarga CPW & PIC VIP", name: "Muthia", category: "Keluarga" },
@@ -330,6 +331,11 @@ export default function WeddingDashboard() {
                           <CheckCircle size={16} className="role-icon" />
                           <span>{person.role}</span>
                         </div>
+                        {('description' in person) && (
+                          <div style={{ marginTop: '0.4rem', fontSize: '0.85rem', color: '#555', lineHeight: '1.4', padding: '0.5rem', background: 'rgba(0,0,0,0.03)', borderRadius: '6px', borderLeft: '3px solid var(--primary-color)' }}>
+                            {(person as any).description}
+                          </div>
+                        )}
                         {person.relatedEventId && (() => {
                           const event = timelineData.find(item => item.id === person.relatedEventId);
                           return event ? (
