@@ -390,19 +390,6 @@ export default function WeddingDashboard() {
               
               <div className="grid-container">
                 <div className="panitia-card">
-                  <span className="panitia-category">Buffet Utama</span>
-                  <h3 className="panitia-name" style={{ fontSize: '1.4rem' }}>Menu Prasmanan (400 Pax)</h3>
-                  <div className="panitia-role" style={{ flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start' }}>
-                    {cateringData.buffet.map((item, idx) => (
-                      <div key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
-                        <CheckCircle size={16} style={{ color: 'var(--primary-color)', marginTop: '4px', flexShrink: 0 }} />
-                        <span style={{ color: 'var(--text-primary)', lineHeight: 1.4 }}>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="panitia-card">
                   <span className="panitia-category" style={{ background: '#F0F4F8', color: '#4A6C8C', borderColor: 'rgba(74, 108, 140, 0.2)' }}>Menu After Akad</span>
                   <h3 className="panitia-name" style={{ fontSize: '1.4rem' }}>Sajian Pagi</h3>
                   <div className="panitia-role" style={{ flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start' }}>
@@ -410,6 +397,19 @@ export default function WeddingDashboard() {
                       <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', width: '100%', gap: '1rem', borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem' }}>
                         <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}><Coffee size={14} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle', color: '#4A6C8C' }}/> {item.name}</span>
                         <span className="waktu-value" style={{ padding: '0.2rem 0.6rem', fontSize: '0.8rem', background: '#F0F4F8', color: '#4A6C8C', borderColor: 'rgba(74, 108, 140, 0.2)' }}>{item.qty}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="panitia-card">
+                  <span className="panitia-category">Buffet Utama</span>
+                  <h3 className="panitia-name" style={{ fontSize: '1.4rem' }}>Menu Prasmanan (400 Pax)</h3>
+                  <div className="panitia-role" style={{ flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start' }}>
+                    {cateringData.buffet.map((item, idx) => (
+                      <div key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+                        <CheckCircle size={16} style={{ color: 'var(--primary-color)', marginTop: '4px', flexShrink: 0 }} />
+                        <span style={{ color: 'var(--text-primary)', lineHeight: 1.4 }}>{item}</span>
                       </div>
                     ))}
                   </div>
