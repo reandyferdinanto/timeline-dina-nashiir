@@ -16,7 +16,7 @@ const weddingDetails = {
 
 const panitiaData = [
   // Inti & Vendor
-  { id: 1, role: "Ketua Panitia", name: "Reandy Ferdinanto", category: "Inti" },
+  { id: 1, role: "Ketua Panitia, PIC Angpao, & Saksi Nikah CPW", name: "Reandy Ferdinanto", category: "Inti" },
   { id: 2, role: "Koordinator Pelaksana, Dekor, Ent, Dok", name: "BIG WO", category: "Inti" },
   { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah", category: "Keluarga" },
   { id: 4, role: "Vendor Catering", name: "BIG Catering", category: "Vendor" },
@@ -25,31 +25,27 @@ const panitiaData = [
   { id: 7, role: "Vendor Dokumentasi", name: "BIG Moment", category: "Vendor" },
   
   // PIC & Keluarga
-  { id: 8, role: "PIC Angpao", name: "Reandy", category: "PIC" },
   { id: 32, role: "PIC Buku Tamu & Souvenir", name: "Damara & Haira", category: "PIC", description: "Menjaga & memastikan semua tamu mengisi buku tamu, menulis list kado (jika berupa hadiah barang), dan memastikan souvenir dibagikan dengan sistem tukar voucher." },
   { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Abrar", category: "PIC", relatedEventId: 4, description: "Tugas H-1 (24 Juli 2026): Mengantar souvenir & peralatan pernikahan ke ruang rias, memberikan bukti foto kepada pengantin bahwa barang sudah ditaruh dengan baik & ruangan dikunci. Kunci kemudian dititipkan ke rumah Maulidina untuk persiapan pagi hari." },
   { id: 10, role: "Koord. Keluarga CPP", name: "Neni Balqis", category: "Keluarga" },
-  { id: 11, role: "Koord. Keluarga CPW & PIC VIP", name: "Muthia", category: "Keluarga" },
+  { id: 11, role: "Koord. Keluarga CPW, PIC VIP, & PIC Mahar/Buku Nikah/Hantaran", name: "Muthia", category: "Keluarga" },
   { id: 30, role: "Koord. Keluarga Besar Hardjosuwito", name: "Tanty", category: "Keluarga", relatedEventId: 8 },
 
   // Panitia Akad Nikah
   { id: 12, role: "Teks Meja Akad, Label Kursi & MC Akad", name: "BIG WO", category: "Akad", relatedEventId: 11 },
   { id: 13, role: "Juru Bicara Akad CPW", name: "Bp. Toni Yuseno", category: "Akad", relatedEventId: 11 },
-  { id: 14, role: "Juru Bicara Akad CPP", name: "Bp. Ust. Hadiri", category: "Akad", relatedEventId: 11 },
+  { id: 14, role: "Juru Bicara Akad CPP & Sambutan/Do'a Resepsi", name: "Bp. Ust. Hadiri", category: "Akad", relatedEventId: 11 },
   { id: 15, role: "Wali Nikah", name: "Bp. Faizann Raihan Eshan (Adik Kandung)", category: "Akad", relatedEventId: 12 },
   { id: 16, role: "Qori", name: "Lukman Hakim", category: "Akad", relatedEventId: 12 },
   { id: 17, role: "Saritilawah", name: "Putri Daryani", category: "Akad", relatedEventId: 12 },
   { id: 18, role: "Penghulu (KUA Pondok Gede)", name: "Bp. Ust. H. Khamaludin", category: "Akad", relatedEventId: 12 },
   { id: 19, role: "Wakil Ketua Panitia & PIC Penghulu", name: "Amar", category: "Inti", relatedEventId: 10, description: "Memantau masing-masing panitia sudah melakukan tugasnya dengan baik. Serta bertugas menghubungi penghulu & memastikan hadir tepat waktu." },
-  { id: 20, role: "Saksi Nikah CPW", name: "Bp. Reandy Ferdinanto", category: "Akad", relatedEventId: 12 },
   { id: 21, role: "Saksi Nikah CPP", name: "Bp. Abdul Rahman", category: "Akad", relatedEventId: 12 },
   { id: 22, role: "Pengapit CPP", name: "Ibu Zaenab Rambe & Bp.", category: "Keluarga", relatedEventId: 11 },
   { id: 23, role: "Pengapit CPW", name: "Muthia & Nadhira", category: "Keluarga", relatedEventId: 12 },
   { id: 24, role: "Pembawa Baki Melati", name: "Azura", category: "Akad", relatedEventId: 12 },
-  { id: 25, role: "PIC Mahar, Buku Nikah, & Hantaran", name: "Muthia", category: "PIC", relatedEventId: 12 },
   
   // Resepsi
-  { id: 26, role: "Sambutan & Do'a Resepsi", name: "Bp. Ust. Hadiri", category: "Resepsi", relatedEventId: 17 },
   { id: 33, role: "Among Tamu", name: "Mbak Rika & Mas Hari", category: "Keluarga", relatedEventId: 17, description: "Berdiri di depan (setelah penerima tamu) untuk menerima dan menyapa tamu undangan." },
   { id: 34, role: "Among Tamu", name: "Mbak Tia & Mas Toni", category: "Keluarga", relatedEventId: 17, description: "Berdiri di depan (setelah penerima tamu) untuk menerima dan menyapa tamu undangan." },
   { id: 35, role: "Among Tamu", name: "Bang Amri & Kak Ratih", category: "Keluarga", relatedEventId: 17, description: "Berdiri di depan (setelah penerima tamu) untuk menerima dan menyapa tamu undangan." },
