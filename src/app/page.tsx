@@ -18,7 +18,7 @@ const panitiaData = [
   // Inti & Vendor
   { id: 1, role: "Ketua Panitia", name: "Reandy Ferdinanto", category: "Inti" },
   { id: 2, role: "Koordinator Pelaksana, Dekor, Ent, Dok", name: "BIG WO", category: "Inti" },
-  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah, Tanty", category: "Vendor" },
+  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah, Tanty", category: "Keluarga" },
   { id: 4, role: "Vendor Catering", name: "BIG Catering", category: "Vendor" },
   { id: 5, role: "Vendor Dekorasi", name: "Big Decoration", category: "Vendor" },
   { id: 6, role: "Vendor Entertainment", name: "Dream Entertainment", category: "Vendor" },
