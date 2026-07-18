@@ -97,7 +97,9 @@ const cateringData = {
   afterAkad: [
     { name: "Soto Ayam + Lontong", qty: "100 porsi" },
     { name: "Kopi & Teh", qty: "50 porsi" },
-    { name: "Air Mineral", qty: "100 porsi" }
+    { name: "Air Mineral", qty: "100 porsi" },
+    { name: "Nasi Box Vendor (MUA, Fotografer, WO)", qty: "22 Box" },
+    { name: "Snack Box (Vendor & Keluarga)", qty: "100 Box" }
   ],
   gubukan: [
     {
