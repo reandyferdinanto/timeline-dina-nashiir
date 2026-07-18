@@ -27,7 +27,7 @@ const panitiaData = [
   // PIC & Keluarga
   { id: 8, role: "PIC Angpao", name: "Reandy", category: "PIC" },
   { id: 32, role: "PIC Buku Tamu & Souvenir", name: "Damara & Haira", category: "PIC", description: "Menjaga & memastikan semua tamu mengisi buku tamu, menulis list kado (jika berupa hadiah barang), dan memastikan souvenir dibagikan dengan sistem tukar voucher." },
-  { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Reandy", category: "PIC", relatedEventId: 4 },
+  { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Abrar", category: "PIC", relatedEventId: 4, description: "Tugas H-1 (24 Juli 2026): Mengantar souvenir & peralatan pernikahan ke ruang rias, memberikan bukti foto kepada pengantin bahwa barang sudah ditaruh dengan baik & ruangan dikunci. Kunci kemudian dititipkan ke rumah Maulidina untuk persiapan pagi hari." },
   { id: 10, role: "Koord. Keluarga CPP", name: "Neni Balqis", category: "Keluarga" },
   { id: 11, role: "Koord. Keluarga CPW & PIC VIP", name: "Muthia", category: "Keluarga" },
   { id: 30, role: "Koord. Keluarga Besar Hardjosuwito", name: "Tanty", category: "Keluarga", relatedEventId: 8 },
