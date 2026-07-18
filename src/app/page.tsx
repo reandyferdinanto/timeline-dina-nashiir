@@ -40,7 +40,7 @@ const panitiaData = [
   { id: 16, role: "Qori", name: "Lukman Hakim", category: "Akad", relatedEventId: 12 },
   { id: 17, role: "Saritilawah", name: "Putri Daryani", category: "Akad", relatedEventId: 12 },
   { id: 18, role: "Penghulu (KUA Pondok Gede)", name: "Bp. Ust. H. Khamaludin", category: "Akad", relatedEventId: 12 },
-  { id: 19, role: "PIC Penghulu", name: "Bp. Irfan", category: "PIC", relatedEventId: 10 },
+  { id: 19, role: "Wakil Ketua Panitia & PIC Penghulu", name: "Amar", category: "Inti", relatedEventId: 10, description: "Memantau masing-masing panitia sudah melakukan tugasnya dengan baik. Serta bertugas menghubungi penghulu & memastikan hadir tepat waktu." },
   { id: 20, role: "Saksi Nikah CPW", name: "Bp. Reandy Ferdinanto", category: "Akad", relatedEventId: 12 },
   { id: 21, role: "Saksi Nikah CPP", name: "Bp. Abdul Rahman", category: "Akad", relatedEventId: 12 },
   { id: 22, role: "Pengapit CPP", name: "Ibu Zaenab Rambe & Bp.", category: "Keluarga", relatedEventId: 11 },
