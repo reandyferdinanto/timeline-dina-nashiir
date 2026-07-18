@@ -50,6 +50,9 @@ const panitiaData = [
   
   // Resepsi
   { id: 26, role: "Sambutan & Do'a Resepsi", name: "Bp. Ust. Hadiri", category: "Resepsi", relatedEventId: 17 },
+  { id: 33, role: "Among Tamu", name: "Mbak Rika & Mas Hari", category: "Keluarga", relatedEventId: 17, description: "Berdiri di depan (setelah penerima tamu) untuk menerima dan menyapa tamu undangan." },
+  { id: 34, role: "Among Tamu", name: "Mbak Tia & Mas Toni", category: "Keluarga", relatedEventId: 17, description: "Berdiri di depan (setelah penerima tamu) untuk menerima dan menyapa tamu undangan." },
+  { id: 35, role: "Among Tamu", name: "Bang Amri & Kak Ratih", category: "Keluarga", relatedEventId: 17, description: "Berdiri di depan (setelah penerima tamu) untuk menerima dan menyapa tamu undangan." },
 
   // Busana & Tata Rias
   { id: 27, role: "Asisten CPP & CPW", name: "-", category: "Rias" },
