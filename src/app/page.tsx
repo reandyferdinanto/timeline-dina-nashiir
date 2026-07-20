@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Clock, Users, Calendar, MapPin, Heart, FileText, CheckCircle, Utensils, Coffee, Camera, Package } from 'lucide-react';
 
 // --- Data Preparation ---
 const weddingDetails = {
   brideAndGroom: "Dina & Nashiir",
   venue: "Jambur Djawata",
-  date: "Sabtu, 25 Juni 2026",
+  date: "21 Juli 2026",
   seserahanTime: "07.00 / 07.30 WIB (Tentative)",
   akadTime: "08.00 WIB",
   resepsiTime: "11.00 - 13.00 WIB",
@@ -18,7 +18,7 @@ const panitiaData = [
   // Inti & Vendor
   { id: 1, role: "Ketua Panitia, PIC Angpao, & Saksi Nikah CPW", name: "Reandy Ferdinanto", category: "Inti" },
   { id: 2, role: "Koordinator Pelaksana, Dekor, Ent, Dok", name: "BIG WO", category: "Inti" },
-  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah, Angel, Rika", category: "Keluarga" },
+  { id: 3, role: "PIC Catering", name: "Mbak Rini, Diah, Angel, Rika, Chintia", category: "Keluarga", description: "- 06.30 - 07.00: Menerima 100 snack box dan 25 nasi kotak dari Reandy/Ammar. Nasi kotak didistribusikan khusus untuk vendor, sedangkan keluarga menyantap hidangan sarapan dari katering akad nikah.\n- 07.00: Mengecek area dapur untuk memastikan kesesuaian jumlah porsi makanan dan minuman sarapan pagi sesi Akad Nikah.\n- 09.00 - 10.00: Mengecek kedatangan katering resepsi serta memverifikasi kesesuaian jumlah dan jenis hidangan dengan daftar menu.\n- 13.00 - Selesai: Mengawasi pihak katering dalam mengemas makanan (baik yang belum dihidangkan maupun sisa layak konsumsi) untuk dibawa pulang oleh keluarga CPP dan CPW." },
   { id: 4, role: "Vendor Catering", name: "BIG Catering", category: "Vendor" },
   { id: 5, role: "Vendor Dekorasi", name: "Big Decoration", category: "Vendor" },
   { id: 6, role: "Vendor Entertainment", name: "Dream Entertainment", category: "Vendor" },
@@ -26,7 +26,7 @@ const panitiaData = [
   
   // PIC & Keluarga
   { id: 32, role: "PIC Buku Tamu & Souvenir", name: "Damara & Haira", category: "PIC", description: "Menjaga & memastikan semua tamu mengisi buku tamu, menulis list kado (jika berupa hadiah barang), dan memastikan souvenir dibagikan dengan sistem tukar voucher." },
-  { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Abrar", category: "PIC", relatedEventId: 4, description: "Tugas H-1 (24 Juli 2026): Mengantar souvenir & peralatan pernikahan ke ruang rias, memberikan bukti foto kepada pengantin bahwa barang sudah ditaruh dengan baik & ruangan dikunci. Kunci kemudian dititipkan ke rumah Maulidina untuk persiapan pagi hari." },
+  { id: 9, role: "Koordinator Kunci Ruang Rias", name: "Abrar", category: "PIC", relatedEventId: 4, description: "- H-1 (16.00 - 22.00 WIB): Mengambil souvenir, gembok ruang rias atas, dan perlengkapan lain di rumah Moli untuk dibawa ke Gedung Jambur Djawata.\n- H-1 (Di Gedung): Mengambil kunci ruang rias bawah, lalu memasukkan dan menata perlengkapan di ruang rias atas.\n- H-1 (Keamanan): Memastikan ruang rias atas telah digembok rapat, lalu memfoto semua barang titipan sebagai bukti untuk dikirim ke grup.\n- H-1 (Pengembalian): Menyerahkan kembali kunci ruang rias bawah dan kunci gembok ke rumah Moli.\n- H-1 (Dekorasi): Jika vendor dekor sedang loading, bantu cek kesesuaian layout dan warna dekorasi dengan panduan dokumen.\n- Hari H: Menjaga keamanan barang keluarga di ruang rias secara bergantian dengan panitia lain selama sesi Akad hingga Resepsi." },
   { id: 10, role: "Koord. Keluarga CPP", name: "Neni Balqis", category: "Keluarga" },
   { id: 11, role: "Koord. Keluarga CPW, PIC VIP, & PIC Mahar/Buku Nikah/Hantaran", name: "Muthia", category: "Keluarga" },
   { id: 30, role: "Koord. Keluarga Besar Hardjosuwito", name: "Mbak Tanti", category: "Keluarga", relatedEventId: 8 },
@@ -39,7 +39,7 @@ const panitiaData = [
   { id: 16, role: "Qori", name: "Lukman Hakim", category: "Akad", relatedEventId: 12 },
   { id: 17, role: "Saritilawah", name: "Putri Daryani", category: "Akad", relatedEventId: 12 },
   { id: 18, role: "Penghulu (KUA Pondok Gede)", name: "Bp. Ust. H. Khamaludin", category: "Akad", relatedEventId: 12, description: "No. Telp: 0857-7282-6785 | Alamat: Jl. Celepuk 2 Gg. H. M. Nasim RT 001/012 Kel. Jatimakmur, Kec. Pondok Gede, Bekasi" },
-  { id: 19, role: "Wakil Ketua Panitia & PIC Penghulu", name: "Amar", category: "Inti", relatedEventId: 10, description: "Memantau masing-masing panitia sudah melakukan tugasnya dengan baik. Serta bertugas menghubungi penghulu & memastikan hadir tepat waktu." },
+  { id: 19, role: "Wakil Ketua Panitia & PIC Penghulu", name: "Ammar", category: "Inti", relatedEventId: 10, description: "Memantau seluruh panitia agar bertugas dengan baik & memastikan kehadiran penghulu tepat waktu.\n- H-1: Mengonfirmasi via WA/Telepon bahwa penghulu akan dijemput oleh Mas Sugeng besok (pukul 06.00 - 06.30 WIB) di lokasi yang disepakati.\n- Hari H (06.30 WIB): Memesan GoSend untuk pickup nasi box vendor (berkoordinasi dengan Bule Tuti).\n- Hari H (07.00 - Selesai Akad): Mengoordinasikan penjagaan Ruang Rias. Memastikan hanya pihak yang menitipkan barang yang boleh masuk (wajib didampingi saat mengambil barang).\n- Hari H (07.30 WIB): Membantu Mbak Tanti mengarahkan seluruh keluarga agar segera berkumpul untuk prosesi Akad Nikah.\n- Hari H (11.00 WIB): Bersiap dan bertugas sebagai Among Tamu." },
   { id: 21, role: "Saksi Nikah CPP", name: "Bp. Abdul Rahman", category: "Akad", relatedEventId: 12 },
   { id: 22, role: "Pengapit CPP", name: "Ibu Zaenab Rambe & Bp.", category: "Keluarga", relatedEventId: 11 },
   { id: 23, role: "Pengapit CPW", name: "Muthia & Nadhira", category: "Keluarga", relatedEventId: 12 },
@@ -124,27 +124,41 @@ const cateringData = {
 };
 
 const fotoData = [
-  "Keluarga Inti Cpp/Cpw",
-  "Keluarga Besar Bapa Rahmat (Palembang)",
-  "Keluarga Besar Bapa Miden (Medan)",
-  "Keluarga Besar Hardjo Suwito",
-  "Keluarga Besar Amril Djohor",
-  "Keluarga Besar Djaman",
-  "Keluarga Besar Gabungan",
-  "Pt. Godrej Indonesia",
-  "(Kolega Kerja List VIP Nashiir)",
-  "Teman Kuliah Universitas Negri Veteran Jakarta",
-  "Teman SMA Angkasa",
-  "Teman Rumah",
-  "Bridesmaid",
-  "Penjaga Buku Tamu"
+  { title: "Keluarga Inti Cpp/Cpw" },
+  { title: "Keluarga Besar Bapa Rahmat (Palembang)" },
+  { title: "Keluarga Besar Bapa Miden (Medan)" },
+  { 
+    title: "Keluarga Besar Hardjo Suwito",
+    time: "12.30 WIB",
+    subgroups: [
+      "Kel. Alm Bapak Hartono",
+      "Kel. Alm Ibu Ramilah",
+      "Kel. Alm Suparman",
+      "Kel. Alm Ramini",
+      "Kel. Ramiyati",
+      "Kel. Alm Suyati",
+      "Kel. Suharti",
+      "Kel. Tuti Amperawati"
+    ]
+  },
+  { title: "Keluarga Besar Amril Djohor" },
+  { title: "Keluarga Besar Djaman" },
+  { title: "Keluarga Besar Gabungan" },
+  { title: "Pt. Godrej Indonesia" },
+  { title: "(Kolega Kerja List VIP Nashiir)" },
+  { title: "Teman Kuliah Universitas Negri Veteran Jakarta" },
+  { title: "Teman SMA Angkasa" },
+  { title: "Teman Rumah" },
+  { title: "Bridesmaid" },
+  { title: "Penjaga Buku Tamu" }
 ];
 
 const perlengkapanData = [
   "Gembok Angpao 12mm x 2 pcs",
   "Gembok Ruang Rias 22 mm x 2 pcs",
   "Koper Angpao (Biru)",
-  "Goody bag untuk souvenir"
+  "Goody bag untuk souvenir",
+  "Baterai AA x 6 pcs"
 ];
 
 const highlightNames = (text: string) => {
@@ -164,6 +178,64 @@ const highlightNames = (text: string) => {
     }
     return part;
   });
+};
+
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // 25 Juli 2026 08:00 WIB
+    const targetDate = new Date('2026-07-25T08:00:00+07:00').getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
+      }
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!mounted) return <div className="countdown-container" style={{ opacity: 0 }}><div className="countdown-box"><span className="countdown-value">0</span></div></div>;
+
+  return (
+    <div className="countdown-container">
+      <div className="countdown-box">
+        <span className="countdown-value">{timeLeft.days}</span>
+        <span className="countdown-label">HARI</span>
+      </div>
+      <div className="countdown-separator">:</div>
+      <div className="countdown-box">
+        <span className="countdown-value">{timeLeft.hours.toString().padStart(2, '0')}</span>
+        <span className="countdown-label">JAM</span>
+      </div>
+      <div className="countdown-separator">:</div>
+      <div className="countdown-box">
+        <span className="countdown-value">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+        <span className="countdown-label">MENIT</span>
+      </div>
+      <div className="countdown-separator">:</div>
+      <div className="countdown-box">
+        <span className="countdown-value">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+        <span className="countdown-label">DETIK</span>
+      </div>
+    </div>
+  );
 };
 
 export default function WeddingDashboard() {
@@ -204,7 +276,7 @@ export default function WeddingDashboard() {
     <>
       <header className="hero">
         <div className="hero-content fade-in-up">
-          <Heart className="hero-icon" size={56} />
+          <CountdownTimer />
           <h1 className="hero-title">{weddingDetails.brideAndGroom}</h1>
           <div className="hero-divider"></div>
           
@@ -303,7 +375,23 @@ export default function WeddingDashboard() {
                             {item.phase}
                           </span>
                         </div>
-                        <h3 className="timeline-title" style={{ whiteSpace: 'pre-line' }}>{highlightNames(item.activity)}</h3>
+                        {(() => {
+                          const parts = item.activity.split('\n');
+                          const title = parts[0];
+                          const descriptions = parts.slice(1);
+                          return (
+                            <>
+                              <h3 className="timeline-title">{highlightNames(title)}</h3>
+                              {descriptions.length > 0 && (
+                                <ul className="timeline-description-list">
+                                  {descriptions.map((desc, i) => (
+                                    <li key={i}>{highlightNames(desc.replace(/^- /, ''))}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </>
+                          );
+                        })()}
                         <div className="timeline-pic">
                           <Users size={18} style={{ marginTop: '2px', color: 'var(--primary-color)' }} />
                           <div>
@@ -346,8 +434,16 @@ export default function WeddingDashboard() {
                           <span>{person.role}</span>
                         </div>
                         {('description' in person) && (
-                          <div style={{ marginTop: '0.4rem', fontSize: '0.85rem', color: '#555', lineHeight: '1.4', padding: '0.5rem', background: 'rgba(0,0,0,0.03)', borderRadius: '6px', borderLeft: '3px solid var(--primary-color)' }}>
-                            {(person as any).description}
+                          <div className="panitia-desc">
+                            {((person as any).description as string).split('\n').map((line, i) => {
+                              const isBullet = line.trim().startsWith('- ');
+                              return (
+                                <div key={i} className={isBullet ? "desc-bullet" : "desc-text"}>
+                                  {isBullet && <span className="bullet-icon">•</span>}
+                                  <span>{highlightNames(isBullet ? line.replace(/^- /, '') : line)}</span>
+                                </div>
+                              );
+                            })}
                           </div>
                         )}
                         {person.relatedEventId && (() => {
@@ -515,15 +611,35 @@ export default function WeddingDashboard() {
               
               <div className="grid-container">
                 {fotoData.map((item, idx) => (
-                  <div key={idx} className="panitia-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.5rem' }}>
+                  <div key={idx} className="panitia-card" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1rem 1.5rem' }}>
                     <div style={{ 
                       width: '40px', height: '40px', borderRadius: '50%', background: 'var(--primary-color)', 
                       color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                      fontSize: '1.2rem', fontWeight: 600, flexShrink: 0 
+                      fontSize: '1.2rem', fontWeight: 600, flexShrink: 0, marginTop: '0.2rem'
                     }}>
                       {idx + 1}
                     </div>
-                    <h3 className="panitia-name" style={{ fontSize: '1.1rem', margin: 0 }}>{item}</h3>
+                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '40px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                        <h3 className="panitia-name" style={{ fontSize: '1.1rem', margin: 0 }}>{item.title}</h3>
+                        {item.time && (
+                          <span style={{ fontSize: '0.8rem', fontWeight: 600, background: 'rgba(114, 47, 55, 0.08)', color: 'var(--primary-color)', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid rgba(114, 47, 55, 0.2)' }}>
+                            <Clock size={12} style={{ display: 'inline', marginRight: '4px', marginBottom: '2px' }} />
+                            {item.time}
+                          </span>
+                        )}
+                      </div>
+                      {item.subgroups && (
+                        <div style={{ marginTop: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(0,0,0,0.02)', padding: '0.75rem 1rem', borderRadius: '8px', borderLeft: '2px solid var(--accent-color)' }}>
+                          {item.subgroups.map((sub, i) => (
+                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
+                              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-color)', marginTop: '0.45rem', flexShrink: 0 }}></div>
+                              <span style={{ lineHeight: 1.4 }}>{sub}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
